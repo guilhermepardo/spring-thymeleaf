@@ -16,8 +16,7 @@ public class MemberService {
     @Autowired
     private MemberRepository memberRepository;
 
-    public Member createMember(Member member) {
-
+    public Member createMember(Member member){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         member.setPassword(encoder.encode(member.getPassword()));
         Role memberRole = new Role("ADMIN");
@@ -26,7 +25,6 @@ public class MemberService {
         member.setRole(roles);
         memberRepository.save(member);
         return member;
-
     }
 
 }
